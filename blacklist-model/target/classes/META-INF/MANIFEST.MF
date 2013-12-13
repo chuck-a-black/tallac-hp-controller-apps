@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1386716603116
+Build-Jdk: 1.7.0_25
+Built-By: chuck
+Bundle-Description: Blacklist Security Application - domain model module
+Bundle-ManifestVersion: 2
+Bundle-Name: blacklist-model
+Bundle-SymbolicName: com.tallac.blacklist.blacklist-model
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.tallac.blacklist.model;uses:="com.hp.api,com.hp.sdn,
+ com.hp.util.filter";version="1.0.0.SNAPSHOT"
+Import-Package: com.hp.api,com.hp.sdn;version="[2.0,3)",com.hp.util.filt
+ er
+Tool: Bnd-1.50.0

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/util/hp-util-api/6.23.0/hp-util-api-6.23.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/sdn/sdn-common-api/2.0.0/sdn-common-api-2.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/sdn/sdn-adm-api/2.0.0/sdn-adm-api-2.0.0.jar"/>
+  <classpathentry kind="src" path="/blacklist-model"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/util/hp-util-misc/6.23.0/hp-util-misc-6.23.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/sdn/sdn-common-model/2.0.0/sdn-common-model-2.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/felix/org.apache.felix.scr.annotations/1.9.4/org.apache.felix.scr.annotations-1.9.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/util/hp-util-ip/6.23.0/hp-util-ip-6.23.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.8/junit-4.8.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/easymock/easymock/3.0/easymock-3.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/1.2/objenesis-1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/hp/util/hp-util-test/6.23.0/hp-util-test-6.23.0.jar"/>
+</classpath>

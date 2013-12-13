@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1386716607754
+Build-Jdk: 1.7.0_25
+Built-By: chuck
+Bundle-Description: Blacklist Security Application - service implementat
+ ion module
+Bundle-ManifestVersion: 2
+Bundle-Name: blacklist-bl
+Bundle-SymbolicName: com.tallac.blacklist.blacklist-bl
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.tallac.blacklist.handler;uses:="com.hp.of.lib.msg,co
+ m.tallac.blacklist.manager,com.hp.of.ctl.pkt,org.slf4j,com.hp.util.ip,c
+ om.hp.of.lib.dt,com.hp.of.ctl,com.hp.of.lib,com.hp.of.lib.match,com.hp.
+ util.pkt,com.hp.of.lib.instr";version="1.0.0.SNAPSHOT",com.tallac.black
+ list.listener;uses:="com.hp.of.lib.msg,com.hp.of.ctl,org.slf4j,com.hp.u
+ til.ip,com.hp.of.lib.dt,com.tallac.blacklist.handler,com.hp.of.lib,com.
+ hp.of.ctl.pkt,com.hp.util.pkt,com.hp.of.lib.instr,com.tallac.blacklist.
+ manager";version="1.0.0.SNAPSHOT",com.tallac.blacklist.api;version="1.0
+ .0.SNAPSHOT",com.tallac.blacklist.manager;uses:="org.slf4j,com.hp.util.
+ ip,com.hp.of.lib.dt,com.hp.of.lib.msg,com.hp.of.ctl,com.hp.of.lib.match
+ ,com.hp.of.lib.instr,com.hp.of.lib";version="1.0.0.SNAPSHOT"
+Import-Package: com.hp.of.ctl,com.hp.of.ctl.pkt,com.hp.of.lib,com.hp.of.
+ lib.dt,com.hp.of.lib.instr,com.hp.of.lib.match,com.hp.of.lib.msg,com.hp
+ .util.ip,com.hp.util.pkt,com.tallac.blacklist.api;version="[1.0,2)",com
+ .tallac.blacklist.listener,org.slf4j;version="[1.7,2)"
+Service-Component: OSGI-INF/com.tallac.blacklist.impl.BlacklistComponent
+ .xml
+Tool: Bnd-1.50.0

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component immediate="true" name="com.tallac.blacklist.rs.ServiceAssistant">
+        <implementation class="com.tallac.blacklist.rs.ServiceAssistant"/>
+        <property name="service.pid" value="com.tallac.blacklist.rs.ServiceAssistant"/>
+        <reference name="BlacklistService" interface="com.tallac.blacklist.api.BlacklistService" cardinality="0..n" policy="dynamic" bind="bindBlacklistService" unbind="unbindBlacklistService"/>
+    </scr:component>
+</components>

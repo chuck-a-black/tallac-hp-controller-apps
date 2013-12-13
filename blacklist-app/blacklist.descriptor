@@ -1,0 +1,7 @@
+App_id=com.tallac.blacklist
+App_name=Blacklist Security Application
+Version=1.0.0.SNAPSHOT
+Support_team=false
+
+Vendor=tallac
+Description=Application for filtering out suspect DNS and IP requests
