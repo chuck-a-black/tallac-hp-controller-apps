@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.tallac.cb</groupId>
+        <artifactId>cb-root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../cb-root/pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cb-app</artifactId>
+    <packaging>pom</packaging>
+
+    <name>cb-app</name>
+    <description>test application - application packaging module</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tallac.cb</groupId>
+            <artifactId>cb-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tallac.cb</groupId>
+            <artifactId>cb-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tallac.cb</groupId>
+            <artifactId>cb-bl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-app</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="target/bundles" />
+
+                                <copy todir="target/bundles/" flatten="true">
+                                    <fileset dir="/home/chuck/.m2/repository/com/tallac/cb/">
+                                        <include name="cb-model/${project.version}/cb-model-${project.version}.jar"/>
+                                        <include name="cb-api/${project.version}/cb-api-${project.version}.jar"/>
+                                        <include name="cb-dao-api/${project.version}/cb-dao-api-${project.version}.jar"/>
+                                        <include name="cb-bl/${project.version}/cb-bl-${project.version}.jar"/>
+                                        <include name="cb-dao/${project.version}/cb-dao-${project.version}.jar"/>
+                                        <include name="cb-rs/${project.version}/cb-rs-${project.version}.war"/>
+                                        <include name="cb-ui/${project.version}/cb-ui-${project.version}.war"/>
+                                    </fileset>
+                                    <fileset dir="${basedir}" includes="cb.plan"/>
+                                    <fileset dir="${basedir}" includes="cb.descriptor"/>
+                                </copy>
+
+                                <zip destfile="target/cb-${project.version}.zip" basedir="target/bundles"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>

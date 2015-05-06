@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/metatype">
+    <OCD id="com.tallac.cb.impl.TestAppManager" name="%com.tallac.cb.impl.TestAppManager.name" description="%com.tallac.cb.impl.TestAppManager.description"/>
+    <Designate pid="com.tallac.cb.impl.TestAppManager">
+        <Object ocdref="com.tallac.cb.impl.TestAppManager"/>
+    </Designate>
+</metatype:MetaData>

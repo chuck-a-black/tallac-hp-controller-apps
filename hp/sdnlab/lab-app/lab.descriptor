@@ -1,0 +1,7 @@
+App_id=com.acme.lab
+App_name=My SDN Lab
+Version=1.0.0.SNAPSHOT
+Support_team=false
+
+Vendor=acme
+Description=lab

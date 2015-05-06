@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component immediate="true" name="com.acme.lab.rs.ServiceAssistant">
+        <implementation class="com.acme.lab.rs.ServiceAssistant"/>
+        <property name="service.pid" value="com.acme.lab.rs.ServiceAssistant"/>
+        <reference name="SdnLabService" interface="com.acme.lab.api.SdnLabService" cardinality="0..n" policy="dynamic" bind="bindSdnLabService" unbind="unbindSdnLabService"/>
+    </scr:component>
+</components>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component name="com.tallac.cb.ui.UIExtension" deactivate="stop">
+        <implementation class="com.tallac.cb.ui.UIExtension"/>
+        <property name="service.pid" value="com.tallac.cb.ui.UIExtension"/>
+        <reference name="UIExtensionRegistry" interface="com.hp.util.ski.UIExtensionRegistry" cardinality="0..1" policy="dynamic" bind="bindUIExtensionRegistry" unbind="unbindUIExtensionRegistry"/>
+    </scr:component>
+</components>

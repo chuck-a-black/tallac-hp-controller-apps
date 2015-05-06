@@ -1,0 +1,7 @@
+App_id=com.tallac.cb
+App_name=test application
+Version=1.0.0.SNAPSHOT
+Support_team=false
+
+Vendor=tallac
+Description=a test application

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1427283269072
+Build-Jdk: 1.7.0_55
+Built-By: chuck
+Bundle-Description: lab - REST API module
+Bundle-ManifestVersion: 2
+Bundle-Name: lab-rs
+Bundle-SymbolicName: com.acme.lab.lab-rs
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Import-Package: com.acme.lab.api;version="[1.0,2)",com.hp.sdn.adm.rsdoc;
+ version="[2.0,3)",com.hp.sdn.rs.misc;version="[2.0,3)",com.hp.util.rs,c
+ om.hp.util.rs.auth,com.sun.jersey.api.core;version="[1.17,2)",com.sun.j
+ ersey.server.impl.container.servlet,com.sun.jersey.spi.container.servle
+ t,javax.ws.rs;version="[1.1,2)"
+Service-Component: OSGI-INF/com.acme.lab.rs.DocProvider.xml,OSGI-INF/com
+ .acme.lab.rs.ServiceAssistant.xml
+Tool: Bnd-1.50.0
+Web-ContextPath: sdn/lab/v1.0
+Webapp-Context: sdn/lab/v1.0

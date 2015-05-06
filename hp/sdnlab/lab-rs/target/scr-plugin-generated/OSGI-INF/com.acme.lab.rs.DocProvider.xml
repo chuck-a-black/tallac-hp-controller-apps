@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component name="com.acme.lab.rs.DocProvider" deactivate="stop">
+        <implementation class="com.acme.lab.rs.DocProvider"/>
+        <property name="service.pid" value="com.acme.lab.rs.DocProvider"/>
+        <reference name="RSDocRegistry" interface="com.hp.sdn.adm.rsdoc.RSDocRegistry" cardinality="0..1" policy="dynamic" bind="bindRSDocRegistry" unbind="unbindRSDocRegistry"/>
+    </scr:component>
+</components>

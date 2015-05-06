@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1427283262674
+Build-Jdk: 1.7.0_55
+Built-By: chuck
+Bundle-Description: lab - domain model module
+Bundle-ManifestVersion: 2
+Bundle-Name: lab-model
+Bundle-SymbolicName: com.acme.lab.lab-model
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.acme.lab.model;uses:="com.hp.api,com.hp.sdn,com.hp.u
+ til.filter";version="1.0.0.SNAPSHOT"
+Import-Package: com.hp.api,com.hp.sdn;version="[2.0,3)",com.hp.util.filt
+ er
+Tool: Bnd-1.50.0

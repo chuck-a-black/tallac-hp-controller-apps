@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component name="com.tallac.cb.impl.TestAppManager" activate="activate" deactivate="deactivate">
+        <implementation class="com.tallac.cb.impl.TestAppManager"/>
+        <service servicefactory="false">
+            <provide interface="com.tallac.cb.api.TestAppService"/>
+        </service>
+        <property name="service.pid" value="com.tallac.cb.impl.TestAppManager"/>
+        <reference name="controllerService" interface="com.hp.of.ctl.ControllerService" cardinality="1..1" policy="dynamic" bind="bindControllerService" unbind="unbindControllerService"/>
+    </scr:component>
+</components>

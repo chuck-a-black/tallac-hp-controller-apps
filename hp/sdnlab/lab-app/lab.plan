@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plan name="lab" version="1.0.0.SNAPSHOT" scoped="false" atomic="false"
+                xmlns="http://www.eclipse.org/virgo/schema/plan"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="
+                    http://www.eclipse.org/virgo/schema/plan 
+                    http://www.eclipse.org/virgo/schema/plan/eclipse-virgo-plan.xsd">
+
+    <!-- Server deploys the artifacts in the plan in the order in which they are listed  -->
+    <artifact type="bundle" name="com.acme.lab.lab-model" version="1.0.0.SNAPSHOT"/>
+    <artifact type="bundle" name="com.acme.lab.lab-api" version="1.0.0.SNAPSHOT"/>
+    <artifact type="bundle" name="com.acme.lab.lab-bl" version="1.0.0.SNAPSHOT"/>
+    <artifact type="bundle" name="com.acme.lab.lab-rs" version="1.0.0.SNAPSHOT"/>
+    <artifact type="bundle" name="com.acme.lab.lab-ui" version="1.0.0.SNAPSHOT"/>
+</plan>

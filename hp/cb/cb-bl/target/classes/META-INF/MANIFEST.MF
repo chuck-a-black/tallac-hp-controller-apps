@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1427272888352
+Build-Jdk: 1.7.0_55
+Built-By: chuck
+Bundle-Description: test application - service implementation module
+Bundle-ManifestVersion: 2
+Bundle-Name: cb-bl
+Bundle-SymbolicName: com.tallac.cb.cb-bl
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.tallac.cb.handler;uses:="com.hp.util.ip,com.hp.of.li
+ b.msg,com.hp.of.ctl.pkt,com.hp.of.lib.instr,org.slf4j,com.hp.of.lib,com
+ .hp.of.lib.dt,com.hp.of.ctl,com.hp.of.lib.match,com.hp.util.pkt";versio
+ n="1.0.0.SNAPSHOT",com.tallac.cb.listener;uses:="com.tallac.cb.handler,
+ com.hp.of.lib.msg,com.hp.of.ctl,com.hp.of.ctl.pkt,com.hp.util.pkt,org.s
+ lf4j,com.hp.util.ip,com.hp.of.lib.dt,com.hp.of.lib.match,com.hp.of.lib.
+ instr,com.hp.of.lib";version="1.0.0.SNAPSHOT"
+Import-Package: com.hp.of.ctl,com.hp.of.ctl.pkt,com.hp.of.lib,com.hp.of.
+ lib.dt,com.hp.of.lib.instr,com.hp.of.lib.match,com.hp.of.lib.msg,com.hp
+ .util.ip,com.hp.util.pkt,com.tallac.cb.api;version="[1.0,2)",com.tallac
+ .cb.listener,org.slf4j;version="[1.7,2)"
+Service-Component: OSGI-INF/com.tallac.cb.impl.TestAppManager.xml
+Tool: Bnd-1.50.0

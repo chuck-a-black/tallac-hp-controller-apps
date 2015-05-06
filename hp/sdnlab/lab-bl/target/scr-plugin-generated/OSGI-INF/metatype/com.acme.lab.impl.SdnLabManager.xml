@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/metatype">
+    <OCD id="com.acme.lab.impl.SdnLabManager" name="%com.acme.lab.impl.SdnLabManager.name" description="%com.acme.lab.impl.SdnLabManager.description"/>
+    <Designate pid="com.acme.lab.impl.SdnLabManager">
+        <Object ocdref="com.acme.lab.impl.SdnLabManager"/>
+    </Designate>
+</metatype:MetaData>

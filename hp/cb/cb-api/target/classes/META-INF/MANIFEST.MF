@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1427272885747
+Build-Jdk: 1.7.0_55
+Built-By: chuck
+Bundle-Description: test application - interface definitions module
+Bundle-ManifestVersion: 2
+Bundle-Name: cb-api
+Bundle-SymbolicName: com.tallac.cb.cb-api
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.tallac.cb.api;version="1.0.0.SNAPSHOT"
+Tool: Bnd-1.50.0
