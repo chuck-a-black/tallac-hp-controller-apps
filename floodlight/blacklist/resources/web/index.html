@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- template from Christophe Coenraets -->
+<!-- 
+   Copyright 2012 IBM
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tallac</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- Place this tag in your head or just before your close body tag -->
+    <![endif]-->
+
+    <!-- Le styles -->
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css"    rel="stylesheet">
+    <link href="css/base.css"      rel="stylesheet">
+    <!-- Le fav and touch icons -->
+    <!-- TODO create some icons 
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    -->
+</head>
+
+<body>
+
+<div class="header"></div>
+
+<div class="container-fluid">
+
+<div id="content"></div>
+
+<hr>
+<footer class="footer">
+    <p><a href="http://floodlight.openflowhub.org/">Floodlight </a> &copy; <a href="http://www.bigswitch.com/">Big Switch Networks</a>, <a href="http://www.research.ibm.com/arl/">IBM</a>, et. al.
+    Powered by <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://mbostock.github.com/d3/">D3.js</a>, etc.</p>
+</footer>
+
+</div> <!-- /container -->
+
+<!-- Templates -->
+<script type="text/template" id="tallac-template">
+  <div id="blacklist-config" >
+    <div class="row-fluid">
+      <div id="dns-list-placeholder" class="span6"></div>
+      <div id="ip-list-placeholder" class="span6"></div>
+    </div>
+  </div>
+
+  <div id="tallac-blacklist-details-list"></div>
+  <div id="tallac-blacklist-stats"></div>
+</script>
+
+<script type="text/template" id="ip-template">
+    <div class="view" >
+        <label><%- record %></label>
+        <button class="destroy" data-id="<%= id%>"></button>
+    </div>
+</script>
+
+<script type="text/template" id="dns-template">
+    <div class="view" >
+        <label><%- record %></label>
+        <button class="destroy" data-id="<%= id%>"></button>
+    </div>
+</script>
+
+<script type="text/template" id="dnsapp-template">
+  <section id="app">
+    <header id="header">
+        <h1>dns</h1>
+        <input id="new-dns" placeholder="What site would you like to block?" autofocus>
+    </header>
+    <section id="main">
+        <ul id="dns-list"></ul>
+    </section>
+  </section>
+</script>
+
+<script type="text/template" id="ipapp-template">
+  <section id="app">
+    <header id="header">
+        <h1>ip</h1>
+        <input id="new-ip" placeholder="What IP would you like to block?">
+    </header>
+    <section id="main">
+        <ul id="ip-list"></ul>
+    </section>
+  </section>
+</script>
+
+<script type="text/template", id="stats-summary-template">
+  <h4>Blocked <%= dnsCount %> DNS requests. Last blocked <%= dnsLastMatch %> <%= formattedTimeDns %></h4>
+  <h4>Blocked <%= ipv4Count %> IP requests. Last blocked <%= ipv4LastMatch %> <%= formattedTimeIp %></h4><br>
+</script>
+
+<script type="text/template", id="stat-item-template">
+    <div class="view row-fluid no-margin" >      
+      <label class="span3 stats-row"><%- entry %></label>
+      <label class="span3 stats-row"><%- formattedTime %></label>
+      <label class="span2 stats-row"><%- switchId %></label>
+      <label class="span1 stats-row"><%- inputPort %></label>
+      <label class="span2 stats-row"><%- sourceIp %></label>
+    </div>
+</script>
+
+<script type="text/template", id="stats-template">
+  <div id="app"> 
+        <header id="header">
+           <h1>log</h1>
+        </header>
+    <div class="row-fluid stats-header no-margin">
+      <label class="span3 stats-col">Entry</label>
+      <label class="span3 stats-col">Date</label>
+      <label class="span2 stats-col">Device</label>
+      <label class="span1 stats-col">Port</label>
+      <label class="span2 stats-col">IP</label>
+    </div>
+    <section id="main">
+      <ul id='log-list'></ul>
+    </section>
+  </div>
+</script>
+<!-- End Templates -->
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/underscore-min.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/moment.js"></script>
+<script src="lib/d3.v2.min.js"></script>
+
+<script src="lib/bootstrap-dropdown.js"></script>
+<script src="lib/bootstrap-alert.js"></script>
+
+<script src="js/utils.js"></script>
+
+<script src="js/models/hostmodel.js"></script>
+<script src="js/models/topologymodel.js"></script>
+<script src="js/models/statusmodel.js"></script>
+<script src="js/models/switchmodel.js"></script>
+<script src="js/models/portmodel.js"></script>
+<script src="js/models/flowmodel.js"></script>
+<script src="js/models/tallacmodel.js"></script>
+
+<script src="js/views/header.js"></script>
+<script src="js/views/home.js"></script>
+<script src="js/views/status.js"></script>
+<script src="js/views/host.js"></script>
+<script src="js/views/switch.js"></script>
+<script src="js/views/topology.js"></script>
+<script src="js/views/port.js"></script>
+<script src="js/views/flow.js"></script>
+
+<script src="js/views/tallac.js"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

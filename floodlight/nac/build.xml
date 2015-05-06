@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+Copyright (c) 2013, Elbrys Networks
+All Rights Reserved.
+-->
+<project basedir="." default="default" name="nac">
+    <property file="resources/version.properties" />
+
+    <property name="nac.source.dir" value="src"/>
+    <property name="nac.output.dir" value="bin"/>
+    <property name="nac.javadoc.dir" value="javadoc"/>
+    <property name="nac.resources.dir" value="resources"/>
+    <property name="nac.libs.dir" value="lib"/>
+
+    <property name="nac.release.dir" value="release"/>
+    <property name="nac.release.zip"
+              value="${nac.release.dir}/nac-${version}.zip"/>
+
+    <property name="nac.jar.name" value="nac-${version}.jar"/>
+    <property name="nac.jar" value="${nac.output.dir}/${nac.jar.name}"/>
+
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="run.args" value=""/>
+
+
+    <path id="nac.classpath">
+        <pathelement location="${nac.output.dir}"/>
+        <fileset dir="${nac.libs.dir}" includes="**/*.jar" />
+    </path>
+
+    <!-- Internal Targets -->
+    <target name="-init">
+        <mkdir dir="${nac.javadoc.dir}"/>
+        <mkdir dir="${nac.output.dir}"/>
+    </target>
+
+    <!-- Main Targets -->
+    <target name="default" depends="build, javadoc" />
+
+    <target name="clean">
+        <delete dir="${nac.output.dir}"/>
+        <delete dir="${nac.javadoc.dir}"/>
+        <delete dir="${nac.release.dir}"/>
+    </target>
+
+    <target name="build"
+            depends="-init">
+        <javac debug="true" debuglevel="${debuglevel}"
+               destdir="${nac.output.dir}" source="${source}"
+               target="${target}" includeAntRuntime="false">
+            <src path="${nac.source.dir}"/>
+            <classpath refid="nac.classpath"/>
+        </javac>
+
+        <copy todir="${nac.output.dir}">
+            <fileset dir="${nac.resources.dir}" includes="**/*" />
+        </copy>
+    </target>
+
+    <target name="javadoc"
+            depends="build">
+        <javadoc destdir="${nac.javadoc.dir}"
+                 windowtitle="Tallac nac"
+                 access="private">
+            <packageset dir="${nac.source.dir}" defaultexcludes="yes" />
+            <classpath refid="nac.classpath" />
+        </javadoc>
+    </target>
+
+    <target name="run"
+            depends="build">
+        <java classname="com.tallac.nac.Main" fork="true">
+            <arg line="${run.args}" />
+            <classpath refid="nac.classpath" />
+        </java>
+    </target>
+
+    <target name="generate-jar-archive"
+            depends="build">
+        <jar destfile="${nac.jar}"
+             basedir="${nac.output.dir}"
+             includes="**/*" />
+    </target>
+
+    <target name="release" depends="clean,javadoc,build,generate-jar-archive">
+
+        <!-- Build the zip archive -->
+        <mkdir dir="${nac.release.dir}"/>
+        <zip destfile="${nac.release.zip}">
+            <zipfileset defaultexcludes="yes" dir="${nac.javadoc.dir}"
+                        prefix="${nac.javadoc.dir}"/>
+
+            <fileset dir="." includes="${nac.jar}" />
+            <fileset dir="various" includes="README.txt"/>
+        </zip>
+    </target>
+
+</project>

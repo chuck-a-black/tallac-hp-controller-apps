@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+Copyright (c) 2012, Elbrys Networks
+All Rights Reserved.
+-->
+<project basedir="." default="default" name="blacklist">
+    <property file="resources/version.properties" />
+
+    <property name="blacklist.source.dir" value="src"/>
+    <property name="blacklist.output.dir" value="bin"/>
+    <property name="blacklist.javadoc.dir" value="javadoc"/>
+    <property name="blacklist.resources.dir" value="resources"/>
+    <property name="blacklist.libs.dir" value="lib"/>
+
+    <property name="blacklist.release.dir" value="release"/>
+    <property name="blacklist.release.zip"
+              value="${blacklist.release.dir}/blacklist-${version}.zip"/>
+
+    <property name="blacklist.jar.name" value="blacklist-${version}.jar"/>
+    <property name="blacklist.jar" value="${blacklist.output.dir}/${blacklist.jar.name}"/>
+
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="run.args" value=""/>
+
+
+    <path id="blacklist.classpath">
+        <pathelement location="${blacklist.output.dir}"/>
+        <fileset dir="${blacklist.libs.dir}" includes="**/*.jar" />
+    </path>
+
+    <!-- Internal Targets -->
+    <target name="-init">
+        <mkdir dir="${blacklist.javadoc.dir}"/>
+        <mkdir dir="${blacklist.output.dir}"/>
+    </target>
+
+    <!-- Main Targets -->
+    <target name="default" depends="build, javadoc" />
+
+    <target name="clean">
+        <delete dir="${blacklist.output.dir}"/>
+        <delete dir="${blacklist.javadoc.dir}"/>
+        <delete dir="${blacklist.release.dir}"/>
+    </target>
+
+    <target name="build"
+            depends="-init">
+        <javac debug="true" debuglevel="${debuglevel}"
+               destdir="${blacklist.output.dir}" source="${source}"
+               target="${target}" includeAntRuntime="false">
+            <src path="${blacklist.source.dir}"/>
+            <classpath refid="blacklist.classpath"/>
+        </javac>
+
+        <copy todir="${blacklist.output.dir}">
+            <fileset dir="${blacklist.resources.dir}" includes="**/*" />
+        </copy>
+    </target>
+
+    <target name="javadoc"
+            depends="build">
+        <javadoc destdir="${blacklist.javadoc.dir}"
+                 windowtitle="Tallac blacklist"
+                 access="private">
+            <packageset dir="${blacklist.source.dir}" defaultexcludes="yes" />
+            <classpath refid="blacklist.classpath" />
+        </javadoc>
+    </target>
+
+    <target name="run"
+            depends="build">
+        <java classname="com.tallac.blacklist.Main" fork="true">
+            <arg line="${run.args}" />
+            <classpath refid="blacklist.classpath" />
+        </java>
+    </target>
+
+    <target name="generate-jar-archive"
+            depends="build">
+        <jar destfile="${blacklist.jar}"
+             basedir="${blacklist.output.dir}"
+             includes="**/*" />
+    </target>
+
+    <target name="release" depends="clean,javadoc,build,generate-jar-archive">
+
+        <!-- Build the zip archive -->
+        <mkdir dir="${blacklist.release.dir}"/>
+        <zip destfile="${blacklist.release.zip}">
+            <zipfileset defaultexcludes="yes" dir="${blacklist.javadoc.dir}"
+                        prefix="${blacklist.javadoc.dir}"/>
+
+            <fileset dir="." includes="${blacklist.jar}" />
+            <fileset dir="various" includes="README.txt"/>
+        </zip>
+    </target>
+
+</project>
