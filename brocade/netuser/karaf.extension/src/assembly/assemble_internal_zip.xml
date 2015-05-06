@@ -1,0 +1,43 @@
+<!-- Defines how we build the .zip file which is our distribution. -->
+
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<!--  we want "system" and related files right at the root level
+		  as this file is suppose to be unzip on top of a karaf
+		  distro. -->
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<fileSets>
+		<fileSet>
+			<directory>target/assembly/</directory>
+			<outputDirectory>.</outputDirectory>
+			<excludes>
+			</excludes>
+		</fileSet>
+	</fileSets>
+
+
+    <files>
+        <file>
+            <source>target/versions/version.properties</source>
+            <outputDirectory>versions</outputDirectory>
+            <destName>${project.groupId}-${project.artifactId}-${project.version}.properties</destName>
+            <fileMode>0444</fileMode>
+        </file>
+		<file>
+			<source>target/etc/bvc-extensions/feature_config_template.cfg</source>
+			<destName>controller/etc/bvc-extensions/${application.name}-${project.version}.cfg</destName>
+		</file>
+        <file>
+            <source>target/etc/bvc-extensions/feature_custom.install</source>
+            <destName>controller/etc/bvc-extensions/${application.name}-${project.version}.install</destName>
+        </file>
+    </files>
+
+</assembly>
